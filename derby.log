@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Fri Jun 23 20:18:10 CLT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-015c-d776-8db6-000007078c88 
+on database directory G:\Proyectos\WebBeans\SoftwareGimnasio\data  with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Loaded from file:/G:/Proyectos/WebBeans/SoftwareEstacionamiento/src/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_112-b15
+user.dir=G:\Proyectos\WebBeans\SoftwareGimnasio
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
