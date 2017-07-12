@@ -6,6 +6,8 @@
 package vista;
 
 import javax.swing.SpinnerNumberModel;
+import personas.Clientes;
+import static procesos.ValidarRut.validarRut;
 
 /**
  *
@@ -20,7 +22,21 @@ public class JfPrincipal extends javax.swing.JFrame {
     public JfPrincipal() {
         initComponents();
     }
-
+    Clientes cli = new Clientes();
+    
+    public void llamarValidaRut(String rut){
+        String rutAux=rut;
+   
+        if (validarRut(rutAux)){
+            
+        }else{
+            this.formRegRut.setText("");
+            this.jTextField1.setText("");
+            this.formRegRut.requestFocus(true);
+            lblRegErrorRut.setVisible(true);
+                       
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +47,9 @@ public class JfPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         fchImagen = new javax.swing.JFileChooser();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PanRegistro = new javax.swing.JPanel();
         lblRegTitulo = new javax.swing.JLabel();
@@ -38,36 +57,95 @@ public class JfPrincipal extends javax.swing.JFrame {
         lblRegRut = new javax.swing.JLabel();
         formRegRut = new javax.swing.JFormattedTextField();
         lblRegNombre = new javax.swing.JLabel();
-        tfRegApe = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        tfRegApepat = new javax.swing.JTextField();
+        lblRegApePat = new javax.swing.JLabel();
+        lblRegApeMat = new javax.swing.JLabel();
+        lblRegTel = new javax.swing.JLabel();
+        formRegFono = new javax.swing.JFormattedTextField();
+        tfRegNombre = new javax.swing.JTextField();
+        tfRegApeMat = new javax.swing.JTextField();
+        lblRegEmail = new javax.swing.JLabel();
+        tfRegEmail = new javax.swing.JTextField();
+        lblRegPlan = new javax.swing.JLabel();
         cbPlanes = new javax.swing.JComboBox<>();
         LbDiaPago = new javax.swing.JLabel();
-        FechaPagos = new javax.swing.JSpinner();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        spnFechaPagos = new javax.swing.JSpinner();
+        SepRegDatos = new javax.swing.JSeparator();
+        sepRegPlan = new javax.swing.JSeparator();
+        btnRegRegistrar = new javax.swing.JButton();
+        btnRegCancelar = new javax.swing.JButton();
+        lblRegErrorRut = new javax.swing.JLabel();
         PanVerificacion = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        btnVeriCon = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JSeparator();
-        lblVeriNombre = new javax.swing.JLabel();
-        LblNombre = new javax.swing.JLabel();
-        tfnombree = new javax.swing.JTextField();
+        lblVerTitulo = new javax.swing.JLabel();
+        sepVerTitulo = new javax.swing.JSeparator();
+        lblVerRut = new javax.swing.JLabel();
+        tfVerRut = new javax.swing.JFormattedTextField();
+        btnVerConsultar = new javax.swing.JButton();
+        sepRut = new javax.swing.JSeparator();
+        lblVerNombre = new javax.swing.JLabel();
+        tfVerNombre = new javax.swing.JTextField();
+        lblVerApePat = new javax.swing.JLabel();
+        tfVerApepat = new javax.swing.JTextField();
+        lblVerApeMat = new javax.swing.JLabel();
+        tfVerApeMat = new javax.swing.JTextField();
+        lblVerFono = new javax.swing.JLabel();
+        tfVerFono = new javax.swing.JFormattedTextField();
+        lblVerEmail = new javax.swing.JLabel();
+        tfVerEmail = new javax.swing.JTextField();
+        lblVerRutBuscado = new javax.swing.JLabel();
+        tfVerRutBuscado = new javax.swing.JFormattedTextField();
+        sepVerDatos = new javax.swing.JSeparator();
+        lblVerPlan = new javax.swing.JLabel();
+        tfVerPlan = new javax.swing.JTextField();
+        lblVerEstado = new javax.swing.JLabel();
+        tfVerEstado = new javax.swing.JTextField();
+        lblVerVencimiento = new javax.swing.JLabel();
+        tfVerVencimiento = new javax.swing.JTextField();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel19 = new javax.swing.JLabel();
+        btnVerLimpiar = new javax.swing.JButton();
         PanPagos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
 
         fchImagen.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("El Rut ingresado no es valido");
+
+        jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jButton1)
+                .addContainerGap(184, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -102,24 +180,32 @@ public class JfPrincipal extends javax.swing.JFrame {
         }
         formRegRut.setToolTipText("Ingrese el Rut del cliente");
         formRegRut.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        formRegRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formRegRutFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formRegRutFocusLost(evt);
+            }
+        });
 
         lblRegNombre.setText("Nombre");
 
-        jLabel5.setText("Apellido Paterno");
+        lblRegApePat.setText("Apellido Paterno");
 
-        jLabel6.setText("Apellido Materno");
+        lblRegApeMat.setText("Apellido Materno");
 
-        jLabel7.setText("Telefono ");
+        lblRegTel.setText("Telefono ");
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("+56#########")));
+            formRegFono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("56#########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jLabel8.setText("E-Mail");
+        lblRegEmail.setText("E-Mail");
 
-        jLabel9.setText("Plan a contratar");
+        lblRegPlan.setText("Plan a contratar");
 
         cbPlanes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plan Mensual", "Plan 6 Meses", "Plan Año" }));
         cbPlanes.setToolTipText("Seleccione el plan a contratar");
@@ -137,13 +223,31 @@ public class JfPrincipal extends javax.swing.JFrame {
         SpinnerNumberModel nm = new SpinnerNumberModel();
         nm.setMaximum(27);
         nm.setMinimum(1);
-        FechaPagos.setModel(nm);
-        FechaPagos.setEditor(new javax.swing.JSpinner.NumberEditor(FechaPagos, ""));
-        FechaPagos.setValue(1);
+        spnFechaPagos.setModel(nm);
+        spnFechaPagos.setEditor(new javax.swing.JSpinner.NumberEditor(spnFechaPagos, ""));
+        spnFechaPagos.setValue(1);
+        spnFechaPagos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                spnFechaPagosFocusLost(evt);
+            }
+        });
 
-        jButton1.setText("Registrar");
+        btnRegRegistrar.setText("Registrar");
+        btnRegRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegRegistrarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancelar");
+        btnRegCancelar.setText("Cancelar");
+        btnRegCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegCancelarActionPerformed(evt);
+            }
+        });
+
+        lblRegErrorRut.setVisible(false);
+        lblRegErrorRut.setText("El rut ingresado no es valido, por favor, ingrese nuevamente");
 
         javax.swing.GroupLayout PanRegistroLayout = new javax.swing.GroupLayout(PanRegistro);
         PanRegistro.setLayout(PanRegistroLayout);
@@ -151,51 +255,54 @@ public class JfPrincipal extends javax.swing.JFrame {
             PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblRegTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(sepTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(PanRegistroLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(130, 130, 130))
+            .addComponent(SepRegDatos, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(sepRegPlan, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(PanRegistroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanRegistroLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(lblRegPlan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LbDiaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FechaPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spnFechaPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanRegistroLayout.createSequentialGroup()
                         .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblRegTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblRegRut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblRegApePat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanRegistroLayout.createSequentialGroup()
                                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(tfRegApe, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(formRegFono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(tfRegApepat, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblRegApeMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblRegEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jTextField6)))
+                                    .addComponent(tfRegNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(tfRegApeMat)
+                                    .addComponent(tfRegEmail)))
                             .addGroup(PanRegistroLayout.createSequentialGroup()
                                 .addComponent(formRegRut, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblRegNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                                 .addGap(138, 138, 138))))))
+            .addGroup(PanRegistroLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(btnRegRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegCancelar)
+                .addGap(130, 130, 130))
+            .addGroup(PanRegistroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRegErrorRut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanRegistroLayout.setVerticalGroup(
             PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,134 +310,328 @@ public class JfPrincipal extends javax.swing.JFrame {
                 .addComponent(lblRegTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRegErrorRut)
+                .addGap(12, 12, 12)
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRegRut)
                     .addComponent(lblRegNombre)
                     .addComponent(formRegRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfRegNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblRegApePat, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfRegApe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfRegApepat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblRegApeMat)
+                        .addComponent(tfRegApeMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
+                    .addComponent(lblRegTel)
                     .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(formRegFono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblRegEmail)
+                        .addComponent(tfRegEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SepRegDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(lblRegPlan)
                     .addComponent(cbPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LbDiaPago)
-                    .addComponent(FechaPagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnFechaPagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sepRegPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(PanRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(30, 30, 30))
+                    .addComponent(btnRegRegistrar)
+                    .addComponent(btnRegCancelar))
+                .addGap(191, 191, 191))
         );
 
         jTabbedPane1.addTab("Registro de clientes", PanRegistro);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Verificacion de clientes");
-        jLabel2.addFocusListener(new java.awt.event.FocusAdapter() {
+        lblVerTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblVerTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVerTitulo.setText("Verificacion de clientes");
+        lblVerTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jLabel2FocusGained(evt);
+                lblVerTituloFocusGained(evt);
             }
         });
 
-        jLabel10.setText("RUT");
+        lblVerRut.setText("RUT");
 
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-A")));
+            tfVerRut.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-A")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        btnVeriCon.setText("Consultar");
-        btnVeriCon.addActionListener(new java.awt.event.ActionListener() {
+        btnVerConsultar.setText("Consultar");
+        btnVerConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVeriConActionPerformed(evt);
+                btnVerConsultarActionPerformed(evt);
             }
         });
 
-        lblVeriNombre.setVisible(false);
-        lblVeriNombre.setText("Nombre");
+        lblVerNombre.setText("Nombre");
 
-        LblNombre.setVisible(false);
-        LblNombre.setText("Nombre");
+        tfVerNombre.setEditable(false);
 
-        tfnombree.setVisible(false);
-        tfnombree.setEditable(false);
+        lblVerApePat.setText("Apellido Paterno");
+
+        tfVerApepat.setEditable(false);
+
+        lblVerApeMat.setText("Apellido Materno");
+
+        tfVerApeMat.setEditable(false);
+
+        lblVerFono.setText("Telefono ");
+
+        tfVerFono.setEditable(false);
+        try {
+            tfVerFono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("56#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        lblVerEmail.setText("E-Mail");
+
+        tfVerEmail.setEditable(false);
+
+        lblVerRutBuscado.setText("RUT");
+
+        tfVerRutBuscado.setEditable(false);
+        try {
+            tfVerRutBuscado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-A")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfVerRutBuscado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfVerRutBuscadoActionPerformed(evt);
+            }
+        });
+
+        lblVerPlan.setText("Plan Contratado");
+
+        tfVerPlan.setEditable(false);
+
+        lblVerEstado.setText("Estado de plan");
+
+        tfVerEstado.setEditable(false);
+        tfVerEstado.setBackground(new java.awt.Color(255, 204, 51));
+        tfVerEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tfVerEstado.setForeground(new java.awt.Color(255, 255, 255));
+        tfVerEstado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfVerEstado.setText("No hay datos");
+
+        lblVerVencimiento.setText("Vencimiento");
+
+        tfVerVencimiento.setEditable(false);
+
+        jProgressBar1.setMaximum(30);
+        jProgressBar1.setValue(15);
+        jProgressBar1.setFocusable(false);
+        jProgressBar1.setOpaque(true);
+        jProgressBar1.setString("15 dias de 30");
+        jProgressBar1.setStringPainted(true);
+
+        jLabel19.setText("Algo que poner");
+
+        btnVerLimpiar.setText("Limpiar Pantalla");
 
         javax.swing.GroupLayout PanVerificacionLayout = new javax.swing.GroupLayout(PanVerificacion);
         PanVerificacion.setLayout(PanVerificacionLayout);
         PanVerificacionLayout.setHorizontalGroup(
             PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(lblVerTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+            .addComponent(sepVerTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(sepRut, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(sepVerDatos, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(PanVerificacionLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanVerificacionLayout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVeriCon))
-                    .addComponent(lblVeriNombre)
+                        .addContainerGap()
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanVerificacionLayout.createSequentialGroup()
+                                .addComponent(lblVerRut, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(tfVerRut, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVerConsultar))
+                            .addGroup(PanVerificacionLayout.createSequentialGroup()
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lblVerFono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblVerApePat, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lblVerRutBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfVerFono, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfVerApepat, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(tfVerRutBuscado))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblVerApeMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblVerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblVerNombre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfVerNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(tfVerApeMat)
+                                    .addComponent(tfVerEmail)))
+                            .addGroup(PanVerificacionLayout.createSequentialGroup()
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVerPlan)
+                                    .addComponent(lblVerVencimiento))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfVerPlan, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(tfVerVencimiento))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVerEstado)
+                                    .addComponent(jLabel19))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(tfVerEstado)))))
                     .addGroup(PanVerificacionLayout.createSequentialGroup()
-                        .addComponent(LblNombre)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfnombree, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(268, 268, 268)
+                        .addComponent(btnVerLimpiar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanVerificacionLayout.setVerticalGroup(
             PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanVerificacionLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVerTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sepVerTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVeriCon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblVeriNombre)
-                .addGap(18, 18, 18)
-                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblNombre)
-                    .addComponent(tfnombree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 349, Short.MAX_VALUE))
+                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanVerificacionLayout.createSequentialGroup()
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVerRut)
+                            .addComponent(tfVerRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVerConsultar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepRut, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanVerificacionLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfVerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblVerNombre)
+                                        .addComponent(lblVerRutBuscado))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanVerificacionLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfVerRutBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVerApePat, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfVerApepat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblVerApeMat)
+                                .addComponent(tfVerApeMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblVerFono)
+                            .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfVerFono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblVerEmail)
+                                .addComponent(tfVerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(sepVerDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVerPlan)
+                            .addComponent(tfVerPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVerEstado)
+                            .addComponent(tfVerEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanVerificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVerVencimiento)
+                            .addComponent(tfVerVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19)))
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(btnVerLimpiar)
+                .addGap(79, 79, 79))
         );
 
         jTabbedPane1.addTab("Verificación de clientes", PanVerificacion);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Pagos");
+
+        jLabel3.setText("RUT");
+
+        jButton3.setText("Buscar");
+
+        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "Tipo de plan", "Fecha pago", "Estado de Pago"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jTextField1.setColumns(9);
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanPagosLayout = new javax.swing.GroupLayout(PanPagos);
         PanPagos.setLayout(PanPagosLayout);
         PanPagosLayout.setHorizontalGroup(
             PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(PanPagosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
         PanPagosLayout.setVerticalGroup(
             PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGroup(PanPagosLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 55, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", PanPagos);
@@ -353,9 +654,9 @@ public class JfPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTabbedPane1FocusGained
 
-    private void jLabel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel2FocusGained
+    private void lblVerTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblVerTituloFocusGained
         this.setTitle("Verificacion de clientes");
-    }//GEN-LAST:event_jLabel2FocusGained
+    }//GEN-LAST:event_lblVerTituloFocusGained
 
     private void PanRegistroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PanRegistroFocusGained
 
@@ -369,19 +670,64 @@ public class JfPrincipal extends javax.swing.JFrame {
         this.setTitle("Registro de clientes");
     }//GEN-LAST:event_lblRegTituloFocusGained
 
-    private void btnVeriConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeriConActionPerformed
-        lblVeriNombre.setText("Nombre: Camilo Sebastian Espinoza Bustos");
-        lblVeriNombre.setVisible(true);
-        LblNombre.setVisible(true);
-        tfnombree.setText("Camilo");
-        tfnombree.setVisible(true);
-    }//GEN-LAST:event_btnVeriConActionPerformed
+    private void btnVerConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerConsultarActionPerformed
+        lblVerNombre.setVisible(true);
+        tfVerNombre.setText("Camilo");
+        tfVerNombre.setVisible(true);
+    }//GEN-LAST:event_btnVerConsultarActionPerformed
+
+    private void btnRegRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegRegistrarActionPerformed
+        cli.setRut(this.formRegRut.getText());
+        cli.setNombre(this.tfRegNombre.getText());
+        cli.setApPat(this.tfRegApepat.getText());
+        cli.setApMat(this.tfRegApeMat.getText());
+        cli.setFono(Integer.parseInt(this.formRegFono.getText()));
+        cli.setEmail(this.tfRegEmail.getText());
+        cli.setIdSucursal(1);
+        
+    }//GEN-LAST:event_btnRegRegistrarActionPerformed
+
+    private void formRegRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusLost
+        lblRegErrorRut.setVisible(false);
+        llamarValidaRut(this.formRegRut.getText());
+    }//GEN-LAST:event_formRegRutFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        llamarValidaRut(this.jTextField1.getText());
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void formRegRutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusGained
+        this.formRegRut.setText("");
+    }//GEN-LAST:event_formRegRutFocusGained
+
+    private void btnRegCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegCancelarActionPerformed
+        this.formRegRut.setText("");
+        this.lblRegErrorRut.setVisible(false);
+    }//GEN-LAST:event_btnRegCancelarActionPerformed
+
+    private void spnFechaPagosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_spnFechaPagosFocusLost
+        int ingreso= (int) this.spnFechaPagos.getValue();
+        if (ingreso <= 1 && ingreso >= 27){
+            
+        }else{
+            this.spnFechaPagos.setValue(1);
+            System.err.println("Error");
+        }
+    }//GEN-LAST:event_spnFechaPagosFocusLost
+
+    private void tfVerRutBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVerRutBuscadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfVerRutBuscadoActionPerformed
     public void Cambio(){
         if (cbPlanes.getSelectedItem()== "Plan Mensual"){
-            FechaPagos.setVisible(true);
+            spnFechaPagos.setVisible(true);
             LbDiaPago.setVisible(true);
         }else{
-            FechaPagos.setVisible(false);
+            spnFechaPagos.setVisible(false);
             LbDiaPago.setVisible(false);
         }
     }
@@ -421,42 +767,73 @@ public class JfPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner FechaPagos;
     private javax.swing.JLabel LbDiaPago;
-    private javax.swing.JLabel LblNombre;
     private javax.swing.JPanel PanPagos;
     private javax.swing.JPanel PanRegistro;
     private javax.swing.JPanel PanVerificacion;
-    private javax.swing.JButton btnVeriCon;
+    private javax.swing.JSeparator SepRegDatos;
+    private javax.swing.JButton btnRegCancelar;
+    private javax.swing.JButton btnRegRegistrar;
+    private javax.swing.JButton btnVerConsultar;
+    private javax.swing.JButton btnVerLimpiar;
     private javax.swing.JComboBox<String> cbPlanes;
     private javax.swing.JFileChooser fchImagen;
+    private javax.swing.JFormattedTextField formRegFono;
     private javax.swing.JFormattedTextField formRegRut;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblRegApeMat;
+    private javax.swing.JLabel lblRegApePat;
+    private javax.swing.JLabel lblRegEmail;
+    private javax.swing.JLabel lblRegErrorRut;
     private javax.swing.JLabel lblRegNombre;
+    private javax.swing.JLabel lblRegPlan;
     private javax.swing.JLabel lblRegRut;
+    private javax.swing.JLabel lblRegTel;
     private javax.swing.JLabel lblRegTitulo;
-    private javax.swing.JLabel lblVeriNombre;
+    private javax.swing.JLabel lblVerApeMat;
+    private javax.swing.JLabel lblVerApePat;
+    private javax.swing.JLabel lblVerEmail;
+    private javax.swing.JLabel lblVerEstado;
+    private javax.swing.JLabel lblVerFono;
+    private javax.swing.JLabel lblVerNombre;
+    private javax.swing.JLabel lblVerPlan;
+    private javax.swing.JLabel lblVerRut;
+    private javax.swing.JLabel lblVerRutBuscado;
+    private javax.swing.JLabel lblVerTitulo;
+    private javax.swing.JLabel lblVerVencimiento;
+    private javax.swing.JSeparator sepRegPlan;
+    private javax.swing.JSeparator sepRut;
     private javax.swing.JSeparator sepTitulo;
-    private javax.swing.JTextField tfRegApe;
-    private javax.swing.JTextField tfnombree;
+    private javax.swing.JSeparator sepVerDatos;
+    private javax.swing.JSeparator sepVerTitulo;
+    private javax.swing.JSpinner spnFechaPagos;
+    private javax.swing.JTextField tfRegApeMat;
+    private javax.swing.JTextField tfRegApepat;
+    private javax.swing.JTextField tfRegEmail;
+    private javax.swing.JTextField tfRegNombre;
+    private javax.swing.JTextField tfVerApeMat;
+    private javax.swing.JTextField tfVerApepat;
+    private javax.swing.JTextField tfVerEmail;
+    private javax.swing.JTextField tfVerEstado;
+    private javax.swing.JFormattedTextField tfVerFono;
+    private javax.swing.JTextField tfVerNombre;
+    private javax.swing.JTextField tfVerPlan;
+    private javax.swing.JFormattedTextField tfVerRut;
+    private javax.swing.JFormattedTextField tfVerRutBuscado;
+    private javax.swing.JTextField tfVerVencimiento;
     // End of variables declaration//GEN-END:variables
 
 }
