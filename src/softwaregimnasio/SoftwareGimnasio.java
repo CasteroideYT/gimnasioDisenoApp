@@ -11,7 +11,9 @@ public class SoftwareGimnasio {
     public static void main(String[] args) {
         DabaEmb db = new DabaEmb();
         Connection cn;
+//        db.CrearBD();
         cn=db.AccederBD();
+        
         JfPrincipal  jp= new JfPrincipal();
         jp.setLocationRelativeTo(null);
         jp.setVisible(true);

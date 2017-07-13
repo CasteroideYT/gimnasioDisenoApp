@@ -14,7 +14,7 @@ public class Clientes {
     private String rut;
     private String ApPat;
     private String ApMat;
-    private int fono; 
+    private String fono; 
     private String email;
     private int idSucursal;
 
@@ -50,11 +50,11 @@ public class Clientes {
         this.ApMat = ApMat;
     }
 
-    public int getFono() {
+    public String getFono() {
         return fono;
     }
 
-    public void setFono(int fono) {
+    public void setFono(String fono) {
         this.fono = fono;
     }
 

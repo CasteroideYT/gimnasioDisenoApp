@@ -20,9 +20,9 @@ public class DabaEmb {
             conn = DriverManager.getConnection("jdbc:derby:.\\data;create=true");
             if (conn != null) {
                 String crearEmpleado = "create table empleado(codigoEmpleado varchar(50), Nombre varchar(50), Apellido varchar(50), Contrasena varchar(40), Tipo varchar(40), primary key (codigoEmpleado))";
-                String crearCliente = "create table cliente(rut varchar(10) NOT NULL , Nombre varchar(30), ApPat varchar(20), ApMat varchar(20), fono integer, email varchar (45), idSucursal integer not null, Primary Key (rut), Foreign Key (idSucursal) references sucursal(idSucursal))";
+                String crearCliente = "create table cliente(rut varchar(13) NOT NULL , Nombre varchar(30), ApPat varchar(20), ApMat varchar(20), fono varchar(11), email varchar (45), Primary Key (rut))";
                 String crearPlanTrabajo = "create table planTrabajo(idPlanTrabajo integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), DuracionMeses integer, DescuentoPlan integer, Primary Key (idPlanTrabajo))";
-                String crearPlanContratado = "create table planContratado(idPlanContratado integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), FechaInicio Date, FechaTermino Date, rut varchar(10) NOT NULL,  Primary Key (idPlanContratado), Foreign Key (rut) references cliente(rut))";
+                String crearPlanContratado = "create table planContratado(idPlanContratado integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), FechaInicio Date, FechaTermino Date, rut varchar(13) NOT NULL,  Primary Key (idPlanContratado), Foreign Key (rut) references cliente(rut))";
                 String crearSucursal = "create table sucursal(idSucursal integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), NombreSucursal varchar(45), Direccion varchar(45), Comuna varchar(30), Fono integer, Primary Key (idSucursal))";
                 String alter = "alter table planContratado add idPlanTrabajo integer ";
                 String ingresarEmpleados = "INSERT INTO empleado VALUES ( 'Admin01', 'Administrador', 'Administrador', 'Admin01', 'Administrador' ) ";

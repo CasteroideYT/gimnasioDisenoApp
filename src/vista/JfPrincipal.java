@@ -6,6 +6,7 @@
 package vista;
 
 import javax.swing.SpinnerNumberModel;
+import model.OperacionesEmb;
 import personas.Clientes;
 import static procesos.ValidarRut.validarRut;
 
@@ -23,7 +24,7 @@ public class JfPrincipal extends javax.swing.JFrame {
         initComponents();
     }
     Clientes cli = new Clientes();
-    
+    OperacionesEmb op= new OperacionesEmb();
     public void llamarValidaRut(String rut){
         String rutAux=rut;
    
@@ -37,6 +38,14 @@ public class JfPrincipal extends javax.swing.JFrame {
                        
         }
     }
+    
+    public void activarBoton(){
+       if (formRegRut.getText()=="" && tfRegNombre.getText()=="" && tfRegApepat.getText()=="" && tfRegApeMat.getText()=="" && formRegFono.getText()=="" && tfRegEmail.getText()=="")
+       {
+            btnRegRegistrar.setEnabled(false);
+        }else {btnRegRegistrar.setEnabled(true);}
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,15 +113,6 @@ public class JfPrincipal extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel19 = new javax.swing.JLabel();
         btnVerLimpiar = new javax.swing.JButton();
-        PanPagos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
 
         fchImagen.setDialogType(javax.swing.JFileChooser.CUSTOM_DIALOG);
 
@@ -203,6 +203,12 @@ public class JfPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        tfRegNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfRegNombreActionPerformed(evt);
+            }
+        });
+
         lblRegEmail.setText("E-Mail");
 
         lblRegPlan.setText("Plan a contratar");
@@ -233,6 +239,11 @@ public class JfPrincipal extends javax.swing.JFrame {
         });
 
         btnRegRegistrar.setText("Registrar");
+        btnRegRegistrar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btnRegRegistrarStateChanged(evt);
+            }
+        });
         btnRegRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegRegistrarActionPerformed(evt);
@@ -565,77 +576,6 @@ public class JfPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Verificación de clientes", PanVerificacion);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Pagos");
-
-        jLabel3.setText("RUT");
-
-        jButton3.setText("Buscar");
-
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "", "Tipo de plan", "Fecha pago", "Estado de Pago"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jTextField1.setColumns(9);
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanPagosLayout = new javax.swing.GroupLayout(PanPagos);
-        PanPagos.setLayout(PanPagosLayout);
-        PanPagosLayout.setHorizontalGroup(
-            PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(PanPagosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-        );
-        PanPagosLayout.setVerticalGroup(
-            PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanPagosLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(PanPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 55, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Pagos", PanPagos);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -650,9 +590,23 @@ public class JfPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jTabbedPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane1FocusGained
 
     }//GEN-LAST:event_jTabbedPane1FocusGained
+
+    private void tfVerRutBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVerRutBuscadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfVerRutBuscadoActionPerformed
+
+    private void btnVerConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerConsultarActionPerformed
+        lblVerNombre.setVisible(true);
+        tfVerNombre.setText("Camilo");
+        tfVerNombre.setVisible(true);
+    }//GEN-LAST:event_btnVerConsultarActionPerformed
 
     private void lblVerTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblVerTituloFocusGained
         this.setTitle("Verificacion de clientes");
@@ -662,66 +616,65 @@ public class JfPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_PanRegistroFocusGained
 
-    private void cbPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPlanesActionPerformed
-        Cambio();
-    }//GEN-LAST:event_cbPlanesActionPerformed
+    private void btnRegCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegCancelarActionPerformed
+        this.formRegRut.setText("");
+        this.lblRegErrorRut.setVisible(false);
+        this.tfRegApeMat.setText("");
+        this.tfRegApepat.setText("");
+        this.tfRegEmail.setText("");
+        this.tfRegNombre.setText("");
+        this.formRegFono.setText("");
 
-    private void lblRegTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblRegTituloFocusGained
-        this.setTitle("Registro de clientes");
-    }//GEN-LAST:event_lblRegTituloFocusGained
-
-    private void btnVerConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerConsultarActionPerformed
-        lblVerNombre.setVisible(true);
-        tfVerNombre.setText("Camilo");
-        tfVerNombre.setVisible(true);
-    }//GEN-LAST:event_btnVerConsultarActionPerformed
+    }//GEN-LAST:event_btnRegCancelarActionPerformed
 
     private void btnRegRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegRegistrarActionPerformed
         cli.setRut(this.formRegRut.getText());
         cli.setNombre(this.tfRegNombre.getText());
         cli.setApPat(this.tfRegApepat.getText());
         cli.setApMat(this.tfRegApeMat.getText());
-        cli.setFono(Integer.parseInt(this.formRegFono.getText()));
+        cli.setFono(this.formRegFono.getText());
         cli.setEmail(this.tfRegEmail.getText());
         cli.setIdSucursal(1);
-        
+        if (op.guadarRegistro(cli)==true){
+            btnRegCancelarActionPerformed(evt);
+        };
+
     }//GEN-LAST:event_btnRegRegistrarActionPerformed
 
-    private void formRegRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusLost
-        lblRegErrorRut.setVisible(false);
-        llamarValidaRut(this.formRegRut.getText());
-    }//GEN-LAST:event_formRegRutFocusLost
+    private void btnRegRegistrarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnRegRegistrarStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jDialog1.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        llamarValidaRut(this.jTextField1.getText());
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void formRegRutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusGained
-        this.formRegRut.setText("");
-    }//GEN-LAST:event_formRegRutFocusGained
-
-    private void btnRegCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegCancelarActionPerformed
-        this.formRegRut.setText("");
-        this.lblRegErrorRut.setVisible(false);
-    }//GEN-LAST:event_btnRegCancelarActionPerformed
+    }//GEN-LAST:event_btnRegRegistrarStateChanged
 
     private void spnFechaPagosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_spnFechaPagosFocusLost
         int ingreso= (int) this.spnFechaPagos.getValue();
         if (ingreso <= 1 && ingreso >= 27){
-            
+
         }else{
             this.spnFechaPagos.setValue(1);
             System.err.println("Error");
         }
     }//GEN-LAST:event_spnFechaPagosFocusLost
 
-    private void tfVerRutBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVerRutBuscadoActionPerformed
+    private void cbPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPlanesActionPerformed
+        Cambio();
+    }//GEN-LAST:event_cbPlanesActionPerformed
+
+    private void tfRegNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRegNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfVerRutBuscadoActionPerformed
+    }//GEN-LAST:event_tfRegNombreActionPerformed
+
+    private void formRegRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusLost
+        lblRegErrorRut.setVisible(false);
+        llamarValidaRut(this.formRegRut.getText());
+    }//GEN-LAST:event_formRegRutFocusLost
+
+    private void formRegRutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formRegRutFocusGained
+        this.formRegRut.setText("");
+    }//GEN-LAST:event_formRegRutFocusGained
+
+    private void lblRegTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblRegTituloFocusGained
+        this.setTitle("Registro de clientes");
+    }//GEN-LAST:event_lblRegTituloFocusGained
     public void Cambio(){
         if (cbPlanes.getSelectedItem()== "Plan Mensual"){
             spnFechaPagos.setVisible(true);
@@ -768,7 +721,6 @@ public class JfPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LbDiaPago;
-    private javax.swing.JPanel PanPagos;
     private javax.swing.JPanel PanRegistro;
     private javax.swing.JPanel PanVerificacion;
     private javax.swing.JSeparator SepRegDatos;
@@ -781,19 +733,11 @@ public class JfPrincipal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField formRegFono;
     private javax.swing.JFormattedTextField formRegRut;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblRegApeMat;
     private javax.swing.JLabel lblRegApePat;
     private javax.swing.JLabel lblRegEmail;

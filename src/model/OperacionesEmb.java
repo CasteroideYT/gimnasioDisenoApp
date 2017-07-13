@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import personas.Clientes;
 
 /**
  *
@@ -16,6 +17,9 @@ import javax.swing.JOptionPane;
  */
 public class OperacionesEmb {
     Conectar conn = new Conectar();
+    DabaEmb cn = new DabaEmb();
+    Connection con = cn.AccederBD();
+    
     public String obtenerContrasena(String identificador,Connection con){
         String contrasena = null;
         String q = "select Contrasena from empleado where codigoEmpleado = '"+identificador+"'";
@@ -26,6 +30,22 @@ public class OperacionesEmb {
          JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
       }
         return contrasena; 
+    }
+    
+    public boolean guadarRegistro(Clientes cli){
+            boolean ingreso=false;
+           String q = "insert into cliente values('"+cli.getRut()+"', '"+cli.getNombre()+"' , '"+cli.getApPat()+"','"+cli.getApMat()+"','"+cli.getFono()+"','"+cli.getEmail()+"')"; 
+        try{
+            PreparedStatement contr = con.prepareStatement(q);
+            contr.execute();
+            contr.close();
+            ingreso=true;
+        }catch(SQLException e){
+         JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+         System.err.println("Error");
+      }
+     
+        return ingreso;
     }
     
 }
